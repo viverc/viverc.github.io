@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="多线程在开发过程中的作用想必每个人都很清楚，极大程度上的利用cpu提高程序的运行效率和用户体验，今天就来理一下在iOS开发过程中常用到的几个关于多线程的类。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单低调有效-iOS多线程">
+<meta property="og:url" content="http://viverc.github.io/2016/07/15/简单低调有效-iOS多线程/index.html">
+<meta property="og:site_name" content="王杰會長">
+<meta property="og:description" content="多线程在开发过程中的作用想必每个人都很清楚，极大程度上的利用cpu提高程序的运行效率和用户体验，今天就来理一下在iOS开发过程中常用到的几个关于多线程的类。">
+<meta property="og:updated_time" content="2017-09-10T18:15:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单低调有效-iOS多线程">
+<meta name="twitter:description" content="多线程在开发过程中的作用想必每个人都很清楚，极大程度上的利用cpu提高程序的运行效率和用户体验，今天就来理一下在iOS开发过程中常用到的几个关于多线程的类。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://viverc.github.io/2016/07/15/简单低调有效-iOS多线程/"/>
+
+  <title> 简单低调有效-iOS多线程 | 王杰會長 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王杰會長</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单低调有效-iOS多线程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T11:18:24+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>多线程在开发过程中的作用想必每个人都很清楚，极大程度上的利用cpu提高程序的运行效率和用户体验，今天就来理一下在iOS开发过程中常用到的几个关于多线程的类。<br><a id="more"></a></p>
+<h3 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h3><p>NSThread的使用更加面向对象，简单易用，并且可以直接操作线程对象，但是在实际的运用中使用的并不是很多，是因为直接操作线程就以为着要自己管理线程，所以NSThread的使用并不是最多的。下面看一下NSThread的具体使用方法。<br><br></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建1.</span></span><br><span class="line"><span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(run:) object:<span class="string">@"jack"</span>];</span><br><span class="line"></span><br><span class="line">thread<span class="variable">.name</span> = <span class="string">@"my-thread"</span>;</span><br><span class="line"></span><br><span class="line">[thread start];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建2.</span></span><br><span class="line">[<span class="built_in">NSThread</span> detachNewThreadSelector:<span class="keyword">@selector</span>(run:) toTarget:<span class="keyword">self</span> withObject:<span class="string">@"rose"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建3.</span></span><br><span class="line">[<span class="keyword">self</span> performSelectorInBackground:<span class="keyword">@selector</span>(run:) withObject:<span class="string">@"jack"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 耗时操作</span></span><br><span class="line">- (<span class="keyword">void</span>)run:(<span class="built_in">NSString</span> *)param</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 其他</span></span><br><span class="line">[<span class="built_in">NSThread</span> sleepForTimeInterval:<span class="number">2</span>]; <span class="comment">// 让线程睡眠2秒（阻塞2秒）</span></span><br><span class="line">[<span class="built_in">NSThread</span> sleepUntilDate:[<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:<span class="number">2</span>]];</span><br><span class="line">[<span class="built_in">NSThread</span> sleepUntilDate:[<span class="built_in">NSDate</span> distantFuture]];<span class="comment">// 睡到死。。</span></span><br><span class="line">[<span class="built_in">NSThread</span> exit]; <span class="comment">// 直接退出线程</span></span><br><span class="line">[<span class="built_in">NSThread</span> currentThread]; <span class="comment">// 当前线程</span></span><br><span class="line">[<span class="built_in">NSThread</span> mainThread]; <span class="comment">// 主线程</span></span><br><span class="line"><span class="comment">// 加锁 ，互斥锁，缺点需要消耗大量的CPU资源</span></span><br><span class="line"><span class="comment">// 线程同步</span></span><br><span class="line"><span class="keyword">@synchronized</span>(<span class="keyword">self</span>) &#123;</span><br><span class="line"> <span class="comment">// 需要锁定的代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 延迟执行</span></span><br><span class="line">[<span class="keyword">self</span> performSelector:&lt;<span class="preprocessor">#(nonnull SEL)#&gt; withObject:nil afterDelay:<span class="title">&lt;#(NSTimeInterval)#&gt;</span>];</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 线程通讯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回到主线程，显示图片</span></span><br><span class="line">[<span class="keyword">self</span><span class="variable">.imageView</span> performSelector:<span class="keyword">@selector</span>(setImage:) onThread:[<span class="built_in">NSThread</span> mainThread] withObject:image waitUntilDone:<span class="literal">NO</span>];</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.imageView</span> performSelectorOnMainThread:<span class="keyword">@selector</span>(setImage:) withObject:image waitUntilDone:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">[<span class="keyword">self</span> performSelectorOnMainThread:<span class="keyword">@selector</span>(showImage:) withObject:image waitUntilDone:<span class="literal">YES</span>]；<span class="comment">// YES 是等完事，向下走 NO就是不等，直接走</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showImage:(<span class="built_in">UIImage</span> *)image</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.imageView</span><span class="variable">.image</span> = image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>并发队列</th>
+<th>手动创建串行队列</th>
+<th>主队列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同步（sync）</td>
+<td><code>没有</code>开启新线程，<code>串</code>行执行任务</td>
+<td><code>没有</code>开启新线程，<code>串</code>行执行任务</td>
+<td><code>没有</code>开启新线程，<code>串</code>行执行任务  </td>
+</tr>
+<tr>
+<td>异步（async）</td>
+<td><code>有</code>开启新线程，<code>并发</code>行执行任务</td>
+<td><code>有</code>开启新线程，<code>串</code>行执行任务</td>
+<td><code>没有</code>开启新线程，<code>串</code>行执行任务 </td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建并发队列</span></span><br><span class="line"><span class="keyword">dispatch_queue_t</span> <span class="built_in">queue</span> = dispatch_queue_create(<span class="string">"com.viverc.queue"</span>, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line"><span class="comment">// 创建串行队列</span></span><br><span class="line"><span class="keyword">dispatch_queue_t</span> <span class="built_in">queue</span> = dispatch_queue_create(<span class="string">"com.viverc.queue"</span>, DISPATCH_QUEUE_SERIAL);<span class="comment">// 第二个参数为NULL也可</span></span><br><span class="line"><span class="comment">// 获得全局并发队列</span></span><br><span class="line"><span class="keyword">dispatch_queue_t</span> <span class="built_in">queue</span> = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 获得主队列， 使用的时候注意点，别玩死就OK</span></span><br><span class="line"><span class="keyword">dispatch_queue_t</span> <span class="built_in">queue</span> = dispatch_get_main_queue();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不能是全局的，然后会分开（自己领会吧。。）</span></span><br><span class="line">dispatch_barrier_async(&lt;<span class="preprocessor">#dispatch_queue_t queue#&gt;, &lt;#^(void)block#&gt;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 延迟</span></span><br><span class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (<span class="keyword">int64_t</span>)(&lt;<span class="preprocessor">#delayInSeconds#&gt; * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span></span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 快速遍历</span></span><br><span class="line">dispatch_apply 将外面的线程(main线程)阻塞了, 他会等待其他所有的循环运行完毕才会往下执行</span><br><span class="line">dispatch_apply(<span class="number">3</span>, <span class="built_in">queue</span>, ^(<span class="keyword">size_t</span> index) &#123;</span><br><span class="line">        NSLog(@<span class="string">"apply loop: %zu, %@"</span>, index, [NSThread currentThread]);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队列组</span></span><br><span class="line"><span class="keyword">dispatch_group_t</span> group = dispatch_group_create();</span><br><span class="line"><span class="keyword">dispatch_queue_t</span> <span class="built_in">queue</span> = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line">dispatch_group_async(group, <span class="built_in">queue</span>, ^&#123;</span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_async(group, <span class="built_in">queue</span>, ^&#123;        </span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h3><h4 id="u57FA_u672C_u4F7F_u7528"><a href="#u57FA_u672C_u4F7F_u7528" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSBlockOperation</span> *op = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="comment">// 在主线程</span></span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"下载1------%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;];</span><br><span class="line">    <span class="comment">// 添加额外的任务(在子线程执行)</span></span><br><span class="line">[op addExecutionBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"下载2------%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[op addExecutionBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"下载3------%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;];</span><br><span class="line">[op addExecutionBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"下载4------%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[op start];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// 创建队列</span></span><br><span class="line">    <span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建操作（任务）</span></span><br><span class="line">    <span class="comment">// 创建NSInvocationOperation</span></span><br><span class="line">    <span class="built_in">NSInvocationOperation</span> *op1 = [[<span class="built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(download1) object:<span class="literal">nil</span>];</span><br><span class="line">    <span class="built_in">NSInvocationOperation</span> *op2 = [[<span class="built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(download2) object:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建NSBlockOperation</span></span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op3 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download3 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    [op3 addExecutionBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download4 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line">    [op3 addExecutionBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download5 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op4 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download6 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建YZGOperation // 自定义Operation，重写main方法</span></span><br><span class="line">    <span class="comment">// 在耗时操作的时候加判断 if（self.isCancelled） return;</span></span><br><span class="line">    YZGOperation *op5 = [[YZGOperation alloc] init];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加任务到队列中</span></span><br><span class="line">    [queue addOperation:op1]; <span class="comment">// [op1 start]</span></span><br><span class="line">    [queue addOperation:op2]; <span class="comment">// [op2 start]</span></span><br><span class="line">    [queue addOperation:op3]; <span class="comment">// [op3 start]</span></span><br><span class="line">    [queue addOperation:op4]; <span class="comment">// [op4 start]</span></span><br><span class="line">    [queue addOperation:op5]; <span class="comment">// [op5 start]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)download1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"download1 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)download2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"download2 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="u7B80_u5355_u65B9_u6CD5"><a href="#u7B80_u5355_u65B9_u6CD5" class="headerlink" title="简单方法"></a>简单方法</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</span><br><span class="line">[queue addOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download1 --- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line"> &#125;];</span><br></pre></td></tr></table></figure>
+<h4 id="u4E00_u4E9B_u5C5E_u6027"><a href="#u4E00_u4E9B_u5C5E_u6027" class="headerlink" title="一些属性"></a>一些属性</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建队列</span></span><br><span class="line">NSOperationQueue *<span class="built_in">queue</span> = [[NSOperationQueue alloc] init];  </span><br><span class="line"><span class="comment">// 设置最大并发操作数</span></span><br><span class="line"><span class="built_in">queue</span>.maxConcurrentOperationCount = <span class="number">1</span>; <span class="comment">// 就变成了串行队列</span></span><br><span class="line"><span class="built_in">queue</span>.suspended = YES;<span class="comment">// 暂停执行</span></span><br><span class="line">[<span class="built_in">queue</span> cancelAllOperations]; <span class="comment">// 取消</span></span><br></pre></td></tr></table></figure>
+<h4 id="u4F9D_u8D56"><a href="#u4F9D_u8D56" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">类似于GCD 队列组</span><br><span class="line">    <span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op1 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download1----%@"</span>, [<span class="built_in">NSThread</span>  currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op2 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download2----%@"</span>, [<span class="built_in">NSThread</span>  currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op3 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download3----%@"</span>, [<span class="built_in">NSThread</span>  currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op4 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"download4----%@"</span>, [<span class="built_in">NSThread</span>  currentThread]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="built_in">NSBlockOperation</span> *op5 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"download5----%@"</span>, [<span class="built_in">NSThread</span>  currentThread]);</span><br><span class="line">    &#125;];</span><br><span class="line">    op5<span class="variable">.completionBlock</span> = ^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"op5执行完毕---%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置依赖</span></span><br><span class="line">    [op3 addDependency:op1];</span><br><span class="line">    [op3 addDependency:op2];</span><br><span class="line">    [op3 addDependency:op4];</span><br><span class="line"></span><br><span class="line">    [queue addOperation:op1];</span><br><span class="line">    [queue addOperation:op2];</span><br><span class="line">    [queue addOperation:op3];</span><br><span class="line">    [queue addOperation:op4];</span><br><span class="line">    [queue addOperation:op5];</span><br></pre></td></tr></table></figure>
+<h4 id="u7EBF_u7A0B_u95F4_u901A_u8BAF"><a href="#u7EBF_u7A0B_u95F4_u901A_u8BAF" class="headerlink" title="线程间通讯"></a>线程间通讯</h4><pre><code>[[[NSOperationQueue alloc] init] addOperationWithBlock:^{
+    // 图片的网络路径
+   NSURL *url = [NSURL URLWithString:@&quot;http://i1.piimg.com/569091/4d218e7a3a6bd868s.jpg&quot;];
+    // 加载图片
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    // 生成图片
+    UIImage *image = [UIImage imageWithData:data];
+
+    // 回到主线程
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        self.imageView.image = image;
+    }];
+}];
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/04/iOS运行机制-runtime/" rel="next" title="iOS运行时机制-RunTime">
+                <i class="fa fa-chevron-left"></i> iOS运行时机制-RunTime
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/09/面试-我的简历/" rel="prev" title="王杰的简历">
+                王杰的简历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/卡通头像.JPG"
+               alt="王杰會長" />
+          <p class="site-author-name" itemprop="name">王杰會長</p>
+          <p class="site-description motion-element" itemprop="description">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="mailto:viverc@163.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2606545023/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/8b807e676e53/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSThread"><span class="nav-number">1.</span> <span class="nav-text">NSThread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD"><span class="nav-number">2.</span> <span class="nav-text">GCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">3.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u57FA_u672C_u4F7F_u7528"><span class="nav-number">3.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u7B80_u5355_u65B9_u6CD5"><span class="nav-number">3.2.</span> <span class="nav-text">简单方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E00_u4E9B_u5C5E_u6027"><span class="nav-number">3.3.</span> <span class="nav-text">一些属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4F9D_u8D56"><span class="nav-number">3.4.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u7EBF_u7A0B_u95F4_u901A_u8BAF"><span class="nav-number">3.5.</span> <span class="nav-text">线程间通讯</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王杰會長</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

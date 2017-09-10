@@ -1,0 +1,626 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="网络时代的到来给了我们很多的方便和益处，个人认为云存储极大的提高了我们生活的品质和工作的效率，作为一个程序猿代码的管理是一项非常重要的工作，git无疑是最好用的一个工具，简单的总结一下简单的使用，不是为了炫技只是为了你能看懂。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git的基本使用">
+<meta property="og:url" content="http://viverc.github.io/2016/01/14/git的基本使用/index.html">
+<meta property="og:site_name" content="王杰會長">
+<meta property="og:description" content="网络时代的到来给了我们很多的方便和益处，个人认为云存储极大的提高了我们生活的品质和工作的效率，作为一个程序猿代码的管理是一项非常重要的工作，git无疑是最好用的一个工具，简单的总结一下简单的使用，不是为了炫技只是为了你能看懂。">
+<meta property="og:updated_time" content="2017-09-10T18:16:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git的基本使用">
+<meta name="twitter:description" content="网络时代的到来给了我们很多的方便和益处，个人认为云存储极大的提高了我们生活的品质和工作的效率，作为一个程序猿代码的管理是一项非常重要的工作，git无疑是最好用的一个工具，简单的总结一下简单的使用，不是为了炫技只是为了你能看懂。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://viverc.github.io/2016/01/14/git的基本使用/"/>
+
+  <title> git的基本使用 | 王杰會長 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王杰會長</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git的基本使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-14T11:18:24+08:00" content="2016-01-14">
+              2016-01-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>   网络时代的到来给了我们很多的方便和益处，个人认为云存储极大的提高了我们生活的品质和工作的效率，作为一个程序猿代码的管理是一项非常重要的工作，git无疑是最好用的一个工具，简单的总结一下简单的使用，不是为了炫技只是为了你能看懂。<br>   <a id="more"></a><br>   至于git的管理代码的原理不做过多的解释，网上可以很随意的搜到，至于git的安装方法这里也不做详细描述。</p>
+<h2 id="1_u3001_u5C06_u4EE3_u7801_u4F20_u5230_u670D_u52A1_u5668"><a href="#1_u3001_u5C06_u4EE3_u7801_u4F20_u5230_u670D_u52A1_u5668" class="headerlink" title="1、将代码传到服务器"></a>1、将代码传到服务器</h2><h3 id="u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE"><a href="#u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE" class="headerlink" title="简单的工作流程图"></a>简单的工作流程图</h3><p>创建git（包括添加远程仓库）-&gt; 将代码添加到本地仓库 -&gt;push到服务器</p>
+<h3 id="1_u3001_u521B_u5EFAgit"><a href="#1_u3001_u521B_u5EFAgit" class="headerlink" title="1、创建git"></a>1、创建git</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br><span class="line">git config user<span class="class">.name</span> <span class="string">"yourName"</span> <span class="comment">//你的名字</span></span><br><span class="line">git config user<span class="class">.email</span> <span class="string">"yourEmail@qq.com"</span> <span class="comment">//你的邮箱</span></span><br></pre></td></tr></table></figure>
+<h3 id="2_u3001_u6DFB_u52A0_u5230_u672C_u5730_u4ED3_u5E93"><a href="#2_u3001_u6DFB_u52A0_u5230_u672C_u5730_u4ED3_u5E93" class="headerlink" title="2、添加到本地仓库"></a>2、添加到本地仓库</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> 文件名                 </span><br><span class="line">git commit -m “备注”     <span class="comment"> //到本地仓库</span></span><br></pre></td></tr></table></figure>
+<h3 id="3_u3001_u6DFB_u52A0_u8FDC_u7A0B_u4ED3_u5E93"><a href="#3_u3001_u6DFB_u52A0_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="3、添加远程仓库"></a>3、添加远程仓库</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">先检查主目录下是否有 .ssh文件夹 如果没有:</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"yourEmail@qq.com"</span></span><br><span class="line">打开.ssh下的id_rsa<span class="class">.pub</span> 公钥复制到key</span><br><span class="line"><span class="comment">//在服务器端建立自己的仓库</span></span><br><span class="line">git remote add origin   (服务器地址)git@git<span class="class">.coding</span><span class="class">.net</span>:iOS.git</span><br></pre></td></tr></table></figure>
+<h3 id="4_u3001push_u5230_u8FDC_u7AEF_u670D_u52A1_u5668"><a href="#4_u3001push_u5230_u8FDC_u7AEF_u670D_u52A1_u5668" class="headerlink" title="4、push到远端服务器"></a>4、push到远端服务器</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin <span class="keyword">master</span>     </span><br><span class="line"><span class="title">// -u</span> 参数只需要在第一次push的时候加，目的使本地的仓库与远端的仓库关联起来以后只要push分支就可以了</span><br><span class="line">git push origin <span class="keyword">master</span>   <span class="title">//master</span>是分支名（后面会降到分支）</span><br></pre></td></tr></table></figure>
+<p>至此你的代码就已经保存在了服务器里，你就不用担心本地代码的修改，或者误操作了。</p>
+<h2 id="2_u3001_u591A_u4EBA_u5408_u4F5C"><a href="#2_u3001_u591A_u4EBA_u5408_u4F5C" class="headerlink" title="2、多人合作"></a>2、多人合作</h2><p>先熟悉几个简单的命令</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status    <span class="comment">//查看仓库的当前状态 </span></span><br><span class="line">git diff      <span class="comment">//可以查看具体修改的内容</span></span><br><span class="line">git <span class="built_in">log</span>       <span class="comment">//顾名思义 操作的记录</span></span><br><span class="line">git rest - -hard HEAD^  <span class="comment">//^表示距离当前的版本  HEAD- -100 就是往前的第100个版本,也可以用 git log查出版本号然后 reset</span></span><br><span class="line">git reset - -hard <span class="number">36218</span>       <span class="comment">//只需要版本号的前几位就可以了</span></span><br><span class="line">git reflog     <span class="comment">//用来记录每次的命令操作</span></span><br></pre></td></tr></table></figure>
+<h3 id="u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE-1"><a href="#u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE-1" class="headerlink" title="简单的工作流程图"></a>简单的工作流程图</h3><p>将代码从服务器pull到本地-&gt;解决冲突-&gt;合并代码-&gt;将代码push到服务器</p>
+<h4 id="1_u3001_u4ECE_u670D_u52A1_u5668clone"><a href="#1_u3001_u4ECE_u670D_u52A1_u5668clone" class="headerlink" title="1、从服务器clone"></a>1、从服务器clone</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@git<span class="class">.coding</span><span class="class">.net</span>:ios<span class="class">.git</span> <span class="comment">//clone命令后面跟的是你的git地址</span></span><br></pre></td></tr></table></figure>
+<h4 id="2_u3001_u89E3_u51B3_u51B2_u7A81"><a href="#2_u3001_u89E3_u51B3_u51B2_u7A81" class="headerlink" title="2、解决冲突"></a>2、解决冲突</h4><p>冲突不一定会遇到但是总有遇到的时候</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment">//可以告诉我们冲突的文件，将冲突的地方进行修改就可以了</span></span><br></pre></td></tr></table></figure>
+<h4 id="3_u3001push_u5230_u670D_u52A1_u5668"><a href="#3_u3001push_u5230_u670D_u52A1_u5668" class="headerlink" title="3、push到服务器"></a>3、push到服务器</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">push </span>origin master</span><br></pre></td></tr></table></figure>
+<h2 id="3_u3001_u5173_u4E8E_u5206_u652F"><a href="#3_u3001_u5173_u4E8E_u5206_u652F" class="headerlink" title="3、关于分支"></a>3、关于分支</h2><h3 id="u5206_u652F_u547D_u4EE4_u6C47_u603B"><a href="#u5206_u652F_u547D_u4EE4_u6C47_u603B" class="headerlink" title="分支命令汇总"></a>分支命令汇总</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Git是鼓励大量使用分支的查看分支：git branch创建分支：git branch &lt;<span class="keyword">name</span>&gt;切换分支：git checkout &lt;<span class="keyword">name</span>&gt;创建+切换分支：git checkout -b &lt;<span class="keyword">name</span>&gt;合并某分支到当前分支：git <span class="built_in">merge</span> &lt;<span class="keyword">name</span>&gt;删除分支：git branch -d &lt;<span class="keyword">name</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1_u3001_u521B_u5EFA_u5408_u5E76_u5206_u652F"><a href="#1_u3001_u521B_u5EFA_u5408_u5E76_u5206_u652F" class="headerlink" title="1、创建合并分支"></a>1、创建合并分支</h3><p>首先，我们创建dev分支，然后切换到dev分支：</p>
+<pre><code>$ git checkout -b dev
+Switched to a new branch &apos;dev&apos;
+git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+$ git branch dev
+$ git checkout dev
+Switched to branch &apos;dev&apos;
+然后，用git branch命令查看当前分支：
+$ git branch * dev master
+git branch命令会列出所有分支，当前分支前面会标一个*号。
+然后，我们就可以在dev分支上正常提交
+</code></pre><p>合并分支</p>
+<pre><code>现在，我们把dev分支的工作成果合并到master分支上：
+$ git merge dev
+$ git branch -d dev
+删除后，查看branch，就只剩下master分支了：
+$ git branch * master
+</code></pre><p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag">#工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/14/面试知识点总结/" rel="prev" title="面试知识点总结">
+                面试知识点总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/卡通头像.JPG"
+               alt="王杰會長" />
+          <p class="site-author-name" itemprop="name">王杰會長</p>
+          <p class="site-description motion-element" itemprop="description">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="mailto:viverc@163.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2606545023/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/8b807e676e53/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1_u3001_u5C06_u4EE3_u7801_u4F20_u5230_u670D_u52A1_u5668"><span class="nav-number">1.</span> <span class="nav-text">1、将代码传到服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE"><span class="nav-number">1.1.</span> <span class="nav-text">简单的工作流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1_u3001_u521B_u5EFAgit"><span class="nav-number">1.2.</span> <span class="nav-text">1、创建git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2_u3001_u6DFB_u52A0_u5230_u672C_u5730_u4ED3_u5E93"><span class="nav-number">1.3.</span> <span class="nav-text">2、添加到本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3_u3001_u6DFB_u52A0_u8FDC_u7A0B_u4ED3_u5E93"><span class="nav-number">1.4.</span> <span class="nav-text">3、添加远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4_u3001push_u5230_u8FDC_u7AEF_u670D_u52A1_u5668"><span class="nav-number">1.5.</span> <span class="nav-text">4、push到远端服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2_u3001_u591A_u4EBA_u5408_u4F5C"><span class="nav-number">2.</span> <span class="nav-text">2、多人合作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u5355_u7684_u5DE5_u4F5C_u6D41_u7A0B_u56FE-1"><span class="nav-number">2.1.</span> <span class="nav-text">简单的工作流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1_u3001_u4ECE_u670D_u52A1_u5668clone"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、从服务器clone</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2_u3001_u89E3_u51B3_u51B2_u7A81"><span class="nav-number">2.1.2.</span> <span class="nav-text">2、解决冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3_u3001push_u5230_u670D_u52A1_u5668"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、push到服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3_u3001_u5173_u4E8E_u5206_u652F"><span class="nav-number">3.</span> <span class="nav-text">3、关于分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5206_u652F_u547D_u4EE4_u6C47_u603B"><span class="nav-number">3.1.</span> <span class="nav-text">分支命令汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1_u3001_u521B_u5EFA_u5408_u5E76_u5206_u652F"><span class="nav-number">3.2.</span> <span class="nav-text">1、创建合并分支</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王杰會長</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

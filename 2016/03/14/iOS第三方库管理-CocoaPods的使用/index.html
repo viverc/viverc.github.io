@@ -1,0 +1,613 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,工具," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在iOS开发的过程中经常要应用第三方库，以前常用的方法就是直接将要用的库文件添加到工程里面，这样的弊端是当第三方库更新发时候就会特别的繁琐，自从有了CocoaPods以后管理第三方库变成了一件非常容易的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS第三方库管理-CocoaPods的使用">
+<meta property="og:url" content="http://viverc.github.io/2016/03/14/iOS第三方库管理-CocoaPods的使用/index.html">
+<meta property="og:site_name" content="王杰會長">
+<meta property="og:description" content="在iOS开发的过程中经常要应用第三方库，以前常用的方法就是直接将要用的库文件添加到工程里面，这样的弊端是当第三方库更新发时候就会特别的繁琐，自从有了CocoaPods以后管理第三方库变成了一件非常容易的事情。">
+<meta property="og:updated_time" content="2017-09-10T18:15:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS第三方库管理-CocoaPods的使用">
+<meta name="twitter:description" content="在iOS开发的过程中经常要应用第三方库，以前常用的方法就是直接将要用的库文件添加到工程里面，这样的弊端是当第三方库更新发时候就会特别的繁琐，自从有了CocoaPods以后管理第三方库变成了一件非常容易的事情。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://viverc.github.io/2016/03/14/iOS第三方库管理-CocoaPods的使用/"/>
+
+  <title> iOS第三方库管理-CocoaPods的使用 | 王杰會長 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王杰會長</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS第三方库管理-CocoaPods的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-14T11:18:24+08:00" content="2016-03-14">
+              2016-03-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在iOS开发的过程中经常要应用第三方库，以前常用的方法就是直接将要用的库文件添加到工程里面，这样的弊端是当第三方库更新发时候就会特别的繁琐，自从有了CocoaPods以后管理第三方库变成了一件非常容易的事情。</p>
+<a id="more"></a>
+<h3 id="1_u3001_u5B89_u88C5"><a href="#1_u3001_u5B89_u88C5" class="headerlink" title="1、安装"></a>1、安装</h3><p>CocoaPods是用Ruby实现的，要想使用它首先需要有Ruby的环境。幸运的是OS X系统默认的已经可以运行Ruby了，因此我们只需要执行以下命令：</p>
+<h5 id="24_sudo_gem_install_cocoapods"><a href="#24_sudo_gem_install_cocoapods" class="headerlink" title="$ sudo gem install cocoapods"></a><code>$ sudo gem install cocoapods</code></h5><p>  用上面的命令应该会半天没反应，除非你翻墙了，这时候需要替换一下ruby</p>
+<h5 id="24_gem_sources_-_-remove_https_3A//rubygems-org/"><a href="#24_gem_sources_-_-remove_https_3A//rubygems-org/" class="headerlink" title="$ gem sources - -remove https://rubygems.org/"></a><code>$ gem sources - -remove https://rubygems.org/</code></h5><p>先删除cocoapods的ruby</p>
+<h5 id="24_gem_sources_-a_http_3A//ruby-taobao-org/"><a href="#24_gem_sources_-a_http_3A//ruby-taobao-org/" class="headerlink" title="$ gem sources -a http://ruby.taobao.org/"></a><code>$ gem sources -a http://ruby.taobao.org/</code></h5><p>然后添加淘宝的（目前mac osx 10.10.5 pod0.39 需要把http改成https）</p>
+<h5 id="24gem_sources_-l"><a href="#24gem_sources_-l" class="headerlink" title="$gem sources -l"></a><code>$gem sources -l</code></h5><p>查看当前的存在的ruby</p>
+<h5 id="24_pod_setup"><a href="#24_pod_setup" class="headerlink" title="$ pod setup"></a><code>$ pod setup</code></h5><p>开始安装</p>
+<h5 id="24_pod_search__u5E93_u540D_u5B57"><a href="#24_pod_search__u5E93_u540D_u5B57" class="headerlink" title="$ pod search 库名字"></a><code>$ pod search 库名字</code></h5><p>查看第三方库是否支持</p>
+<h3 id="2_u3001_u4F7F_u7528"><a href="#2_u3001_u4F7F_u7528" class="headerlink" title="2、使用"></a>2、使用</h3><p>在工程目录下</p>
+<h5 id="24_touch_Podfile__u6216_u8005_vi_Podfile"><a href="#24_touch_Podfile__u6216_u8005_vi_Podfile" class="headerlink" title="$ touch Podfile 或者 vi Podfile"></a><code>$ touch Podfile 或者 vi Podfile</code></h5><p>编辑Podfile文件以Alamofire 为例</p>
+<h5 id="source__u2018https_3A//github-com/CocoaPods/Specs-git_u2018"><a href="#source__u2018https_3A//github-com/CocoaPods/Specs-git_u2018" class="headerlink" title="source ‘https://github.com/CocoaPods/Specs.git‘"></a>source ‘<a href="https://github.com/CocoaPods/Specs.git" target="_blank" rel="external">https://github.com/CocoaPods/Specs.git</a>‘</h5><h5 id="platform__3Aios_2C__u20188-0_u2019"><a href="#platform__3Aios_2C__u20188-0_u2019" class="headerlink" title="platform :ios, ‘8.0’"></a>platform :ios, ‘8.0’</h5><h5 id="use_frameworks_21"><a href="#use_frameworks_21" class="headerlink" title="use_frameworks!"></a>use_frameworks!</h5><h5 id="pod__u2018Alamofire_u2019_2C__u2018_7E_26gt_3B_1-3_u2019"><a href="#pod__u2018Alamofire_u2019_2C__u2018_7E_26gt_3B_1-3_u2019" class="headerlink" title="pod ‘Alamofire’, ‘~&gt; 1.3’"></a>pod ‘Alamofire’, ‘~&gt; 1.3’</h5><h3 id="u6700_u540E_u4E00_u6B65"><a href="#u6700_u540E_u4E00_u6B65" class="headerlink" title="最后一步"></a>最后一步</h3><h5 id="24_pod_install"><a href="#24_pod_install" class="headerlink" title="$ pod install"></a><code>$ pod install</code></h5><p>如果此命令无效 使用 下面的命令</p>
+<h5 id="24_pod_install_-verbose_-no-repo-update"><a href="#24_pod_install_-verbose_-no-repo-update" class="headerlink" title="$ pod install --verbose --no-repo-update"></a><code>$ pod install --verbose --no-repo-update</code></h5><p>这时候工程目录下面应该会生成一个.xcworkspace文件 打开它就可以正常使用了，如果以后需要在工程里面添加其他库，只需要编辑Podfile文件然后</p>
+<h5 id="24_pod_update"><a href="#24_pod_update" class="headerlink" title="$ pod update"></a><code>$ pod update</code></h5><p>就可以了</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/工具/" rel="tag">#工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/14/面试知识点总结/" rel="next" title="面试知识点总结">
+                <i class="fa fa-chevron-left"></i> 面试知识点总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/15/CocoaLumberjack/" rel="prev" title="CocoaLumberjack">
+                CocoaLumberjack <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/卡通头像.JPG"
+               alt="王杰會長" />
+          <p class="site-author-name" itemprop="name">王杰會長</p>
+          <p class="site-description motion-element" itemprop="description">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="mailto:viverc@163.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2606545023/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/8b807e676e53/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1_u3001_u5B89_u88C5"><span class="nav-number">1.</span> <span class="nav-text">1、安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#24_sudo_gem_install_cocoapods"><span class="nav-number">1.0.1.</span> <span class="nav-text">$ sudo gem install cocoapods</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_gem_sources_-_-remove_https_3A//rubygems-org/"><span class="nav-number">1.0.2.</span> <span class="nav-text">$ gem sources - -remove https://rubygems.org/</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_gem_sources_-a_http_3A//ruby-taobao-org/"><span class="nav-number">1.0.3.</span> <span class="nav-text">$ gem sources -a http://ruby.taobao.org/</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24gem_sources_-l"><span class="nav-number">1.0.4.</span> <span class="nav-text">$gem sources -l</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_pod_setup"><span class="nav-number">1.0.5.</span> <span class="nav-text">$ pod setup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_pod_search__u5E93_u540D_u5B57"><span class="nav-number">1.0.6.</span> <span class="nav-text">$ pod search 库名字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2_u3001_u4F7F_u7528"><span class="nav-number">2.</span> <span class="nav-text">2、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#24_touch_Podfile__u6216_u8005_vi_Podfile"><span class="nav-number">2.0.1.</span> <span class="nav-text">$ touch Podfile 或者 vi Podfile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#source__u2018https_3A//github-com/CocoaPods/Specs-git_u2018"><span class="nav-number">2.0.2.</span> <span class="nav-text">source ‘https://github.com/CocoaPods/Specs.git‘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#platform__3Aios_2C__u20188-0_u2019"><span class="nav-number">2.0.3.</span> <span class="nav-text">platform :ios, ‘8.0’</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#use_frameworks_21"><span class="nav-number">2.0.4.</span> <span class="nav-text">use_frameworks!</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pod__u2018Alamofire_u2019_2C__u2018_7E_26gt_3B_1-3_u2019"><span class="nav-number">2.0.5.</span> <span class="nav-text">pod ‘Alamofire’, ‘~> 1.3’</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6700_u540E_u4E00_u6B65"><span class="nav-number">3.</span> <span class="nav-text">最后一步</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#24_pod_install"><span class="nav-number">3.0.1.</span> <span class="nav-text">$ pod install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_pod_install_-verbose_-no-repo-update"><span class="nav-number">3.0.2.</span> <span class="nav-text">$ pod install --verbose --no-repo-update</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24_pod_update"><span class="nav-number">3.0.3.</span> <span class="nav-text">$ pod update</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王杰會長</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

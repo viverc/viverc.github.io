@@ -1,0 +1,605 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能会用到的几个简单的算法">
+<meta property="og:url" content="http://viverc.github.io/2017/09/11/程序灵魂-几个简单的算法/index.html">
+<meta property="og:site_name" content="王杰會長">
+<meta property="og:description" content="算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。">
+<meta property="og:updated_time" content="2017-09-10T18:16:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能会用到的几个简单的算法">
+<meta name="twitter:description" content="算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://viverc.github.io/2017/09/11/程序灵魂-几个简单的算法/"/>
+
+  <title> 你可能会用到的几个简单的算法 | 王杰會長 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王杰會長</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                你可能会用到的几个简单的算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-11T02:16:18+08:00" content="2017-09-11">
+              2017-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>   算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。<br>     <a id="more"></a><br>   从最开始学习的最简单的冒泡算法开始进行整理，不断的学习积累，相信终有一天会取得巨大的进步。</p>
+<h3 id="u5192_u6CE1_u7B97_u6CD5"><a href="#u5192_u6CE1_u7B97_u6CD5" class="headerlink" title="冒泡算法"></a>冒泡算法</h3><h4 id="u7B97_u6CD5_u539F_u7406"><a href="#u7B97_u6CD5_u539F_u7406" class="headerlink" title="算法原理"></a>算法原理</h4><p>冒泡排序算法的运作如下：（从后往前）<br>1、比较相邻的元素。如果第一个比第二个大，就交换他们两个。<br>2、对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。<br>3、针对所有的元素重复以上的步骤，除了最后一个。<br>4、持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+<h4 id="u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09"><a href="#u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09" class="headerlink" title="代码实现（C语言）"></a>代码实现（C语言）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> SIZE <span class="number">8</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, temp;</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n - <span class="number">1</span>; j++)</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n - <span class="number">1</span> - j; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt; a[i + <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                temp = a[i];</span><br><span class="line">                a[i] = a[i + <span class="number">1</span>];</span><br><span class="line">                a[i + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> number[SIZE] = &#123;<span class="number">95</span>, <span class="number">45</span>, <span class="number">15</span>, <span class="number">78</span>, <span class="number">84</span>, <span class="number">51</span>, <span class="number">24</span>, <span class="number">12</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    bubble_sort(number, SIZE);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; SIZE; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>, number[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5FEB_u901F_u6392_u5E8F"><a href="#u5FEB_u901F_u6392_u5E8F" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="u6982_u5FF5"><a href="#u6982_u5FF5" class="headerlink" title="概念"></a>概念</h4><p>快速排序（Quicksort）是对冒泡排序的一种改进。<br>快速排序由C. A. R. Hoare在1962年提出。它的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+<h4 id="u4EE3_u7801"><a href="#u4EE3_u7801" class="headerlink" title="代码"></a>代码</h4><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="built_in">sort</span>(<span class="built_in">int</span> *a, <span class="built_in">int</span> left, <span class="built_in">int</span> right)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(left &gt;= right)<span class="comment">//如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">int</span> i = left;</span><br><span class="line">    <span class="built_in">int</span> j = right;</span><br><span class="line">    <span class="built_in">int</span> <span class="variable">key</span> = a[left];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)     <span class="comment">//控制在当组内寻找一遍</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; <span class="variable">key</span> &lt;= a[j])</span><br><span class="line">        <span class="comment">//而寻找结束的条件就是，1，找到一个小于或者大于key的数（大于或小于取决于你想升序还是降序）2，没有符合条件1的，并且i与j的大小没有反转</span></span><br><span class="line">        &#123;</span><br><span class="line">            j--;<span class="comment">//向前寻找</span></span><br><span class="line">        &#125;</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        <span class="comment">//找到一个这样的数后就把它赋给前面的被拿走的i的值（如果第一次循环且key是a[left]，那么就是给key）</span></span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; <span class="variable">key</span> &gt;= a[i])</span><br><span class="line">        <span class="comment">//这是i在当组内向前寻找，同上，不过注意与key的大小关系停止循环和上面相反,因为排序思想是把数往两边扔，所以左右两边的数大小与key的关系相反</span></span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a[i] = <span class="variable">key</span>;<span class="comment">//当在当组内找完一遍以后就把中间数key回归</span></span><br><span class="line">    <span class="built_in">sort</span>(a, left, i - <span class="number">1</span>);<span class="comment">//最后用同样的方式对分出来的左边的小组进行同上的做法</span></span><br><span class="line">    <span class="built_in">sort</span>(a, i + <span class="number">1</span>, right);<span class="comment">//用同样的方式对分出来的右边的小组进行同上的做法</span></span><br><span class="line">    <span class="comment">//当然最后可能会出现很多分左右，直到每一组的i = j 为止</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u4E8C_u5206_u67E5_u627E"><a href="#u4E8C_u5206_u67E5_u627E" class="headerlink" title="二分查找"></a>二分查找</h3><h4 id="u6982_u5FF5-1"><a href="#u6982_u5FF5-1" class="headerlink" title="概念"></a>概念</h4><p>二分查找又称折半查找，优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。因此，折半查找方法适用于不经常变动而查找频繁的有序列表。首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。</p>
+<h4 id="u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09-1"><a href="#u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09-1" class="headerlink" title="代码实现（C语言）"></a>代码实现（C语言）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinSearch</span><span class="params">(SeqList *R，<span class="keyword">int</span> n,KeyType K)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//在有序表R[0..n-1]中进行二分查找，成功时返回结点的位置，失败时返回-1</span></span><br><span class="line"><span class="keyword">int</span> low=<span class="number">0</span>，high=n-<span class="number">1</span>，mid；<span class="comment">//置当前查找区间上、下界的初值</span></span><br><span class="line"><span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(R[low].key==K)</span><br><span class="line"><span class="keyword">return</span> low;</span><br><span class="line"><span class="keyword">if</span>(R[high].key==k)</span><br><span class="line"><span class="keyword">return</span> high;</span><br><span class="line"><span class="comment">//当前查找区间R[low..high]非空</span></span><br><span class="line">mid=low+((high-low)/<span class="number">2</span>)；</span><br><span class="line"><span class="comment">//使用(low+high)/2会有整数溢出的问题</span></span><br><span class="line"><span class="comment">//（问题会出现在当low+high的结果大于表达式结果类型所能表示的最大值时，</span></span><br><span class="line"><span class="comment">//这样，产生溢出后再/2是不会产生正确结果的，而low+((high-low)/2)不存在这个问题</span></span><br><span class="line"><span class="keyword">if</span>(R[mid].key==K)</span><br><span class="line"><span class="keyword">return</span> mid；<span class="comment">//查找成功返回</span></span><br><span class="line"><span class="keyword">if</span>(R[mid].key&lt;K)</span><br><span class="line">low=mid+<span class="number">1</span>；<span class="comment">//继续在R[mid+1..high]中查找</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">high=mid-<span class="number">1</span>;<span class="comment">//继续在R[low..mid-1]中查找</span></span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(low&gt;high)</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>；<span class="comment">//当low&gt;high时表示所查找区间内没有结果，查找失败</span></span><br><span class="line">&#125;<span class="comment">//BinSeareh</span></span><br><span class="line"> </span><br><span class="line">------------上面代码复杂难懂-----------------</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearchWithoutRecursion</span><span class="params">(intarray[],<span class="keyword">int</span> low,<span class="keyword">int</span> high,<span class="keyword">int</span> target)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">array</span>[mid]&gt;target)</span><br><span class="line">high=mid-<span class="number">1</span>;</span><br><span class="line">elseif(<span class="built_in">array</span>[mid]&lt;target)</span><br><span class="line">low=mid+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span><span class="comment">//findthetarget</span></span><br><span class="line"><span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//the array does not contain the target</span></span><br><span class="line"><span class="keyword">return</span>-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="u9012_u5F52_u5B9E_u73B0"><a href="#u9012_u5F52_u5B9E_u73B0" class="headerlink" title="递归实现"></a>递归实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">intbinary_search(constintarr[],intlow,inthigh,intkey)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> mid=low+(high-low)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(low&gt;high)</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(arr[mid]==key)</span><br><span class="line"><span class="keyword">return</span> mid;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&gt;key)</span><br><span class="line"><span class="keyword">return</span> binary_search(arr,low,mid-<span class="number">1</span>,key);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> binary_search(arr,mid+<span class="number">1</span>,high,key);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u94FE_u8868"><a href="#u94FE_u8868" class="headerlink" title="链表"></a>链表</h3><h3 id="u5927_u6570_u9636_u4E58"><a href="#u5927_u6570_u9636_u4E58" class="headerlink" title="大数阶乘"></a>大数阶乘</h3><h3 id="u6811"><a href="#u6811" class="headerlink" title="树"></a>树</h3><h3 id="u4E8C_u53C9_u6811"><a href="#u4E8C_u53C9_u6811" class="headerlink" title="二叉树"></a>二叉树</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/09/面试-我的简历/" rel="next" title="王杰的简历">
+                <i class="fa fa-chevron-left"></i> 王杰的简历
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/11/关于RunLoop说两句/" rel="prev" title="关于RunLoop说两句">
+                关于RunLoop说两句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/卡通头像.JPG"
+               alt="王杰會長" />
+          <p class="site-author-name" itemprop="name">王杰會長</p>
+          <p class="site-description motion-element" itemprop="description">一个不会弹吉他的摄影师不是一个好程序猿!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="mailto:viverc@163.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2606545023/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/8b807e676e53/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5192_u6CE1_u7B97_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">冒泡算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u7B97_u6CD5_u539F_u7406"><span class="nav-number">1.1.</span> <span class="nav-text">算法原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现（C语言）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5FEB_u901F_u6392_u5E8F"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u6982_u5FF5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4EE3_u7801"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C_u5206_u67E5_u627E"><span class="nav-number">3.</span> <span class="nav-text">二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u6982_u5FF5-1"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4EE3_u7801_u5B9E_u73B0_uFF08C_u8BED_u8A00_uFF09-1"><span class="nav-number">3.2.</span> <span class="nav-text">代码实现（C语言）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9012_u5F52_u5B9E_u73B0"><span class="nav-number">3.3.</span> <span class="nav-text">递归实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u94FE_u8868"><span class="nav-number">4.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5927_u6570_u9636_u4E58"><span class="nav-number">5.</span> <span class="nav-text">大数阶乘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6811"><span class="nav-number">6.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C_u53C9_u6811"><span class="nav-number">7.</span> <span class="nav-text">二叉树</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王杰會長</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
