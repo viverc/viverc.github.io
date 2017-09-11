@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="王杰會長">
 <meta property="og:description" content="又是一年开学季，又是一年面试时😂。好吧，我也不知道为什么总是在开学的时候要找工作。废话不多说了，话说面试的时候，好几个面试官都同时问到了关于RunLoop的问题，我也不知道他们是真的在工作中会用到还是为了那啥你懂的，不过呢还是系统的整理一下，顺便也学习一下。">
 <meta property="og:image" content="https://raw.githubusercontent.com/viverc/MyPhotos/master/表情/黑人问号.jpg">
-<meta property="og:updated_time" content="2017-09-10T19:27:30.000Z">
+<meta property="og:updated_time" content="2017-09-11T01:31:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于RunLoop说两句">
 <meta name="twitter:description" content="又是一年开学季，又是一年面试时😂。好吧，我也不知道为什么总是在开学的时候要找工作。废话不多说了，话说面试的时候，好几个面试官都同时问到了关于RunLoop的问题，我也不知道他们是真的在工作中会用到还是为了那啥你懂的，不过呢还是系统的整理一下，顺便也学习一下。">
@@ -259,7 +259,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-11T02:23:27+08:00" content="2017-09-11">
+            <time itemprop="dateCreated" datetime="2017-09-11T04:23:27+08:00" content="2017-09-11">
               2017-09-11
             </time>
           </span>
@@ -292,7 +292,7 @@
 <h3 id="1_u3001RunLoop_u662F_u4E2A_u5565"><a href="#1_u3001RunLoop_u662F_u4E2A_u5565" class="headerlink" title="1、RunLoop是个啥"></a>1、RunLoop是个啥</h3><p><img src="https://raw.githubusercontent.com/viverc/MyPhotos/master/表情/黑人问号.jpg" alt="黑人问号"></p>
 <p>首先呢RunLoop是一个非常基础的概念，一个线程一次只能执行一个任务，当任务执行完成的时候，线程就会退出，但是很多情况下我们需要这样<strong>一种机制</strong>（对RunLoop就是一种机制）可以让线程随时可以接收事件，并且不退出，比如：我们的手机屏幕需要随时响应我们的手势。我们用代码是这样实现的：</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    initialize();</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> message = get_next_message();</span><br><span class="line">        process_message(message);</span><br><span class="line">    &#125; <span class="keyword">while</span> (message != quit);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 可能有小伙伴觉得不太理解这段代码，实际上非常容易理解，就是一个do while 循环，执行的条件就是当message!=quite去执行循环里面的内容。</p>
+<p> 可能有小伙伴觉得不太理解这段代码，实际上非常容易理解，就是一个do while 循环，执行的条件就是当message!=quite去执行循环里面的内容。(等睡醒了再继续写吧😪)</p>
 
       
     </div>
