@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="一个不会弹吉他的摄影师不是一个好程序猿!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王杰會長">
-<meta property="og:url" content="http://viverc.github.io/archives/2018/index.html">
-<meta property="og:site_name" content="王杰會長">
-<meta property="og:description" content="一个不会弹吉他的摄影师不是一个好程序猿!">
+<meta name="description" content="iOS9以后，iPhone6S之后引入的3Dtouch。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 3DTouch开发">
+<meta property="og:url" content="http://viverc.github.io/2019/04/30/iOS 3DTouch开发/index.html">
+<meta property="og:site_name" content="王杰">
+<meta property="og:description" content="iOS9以后，iPhone6S之后引入的3Dtouch。">
+<meta property="og:updated_time" content="2018-03-07T03:16:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王杰會長">
-<meta name="twitter:description" content="一个不会弹吉他的摄影师不是一个好程序猿!">
+<meta name="twitter:title" content="iOS 3DTouch开发">
+<meta name="twitter:description" content="iOS9以后，iPhone6S之后引入的3Dtouch。">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://viverc.github.io/archives/2018/"/>
+  <link rel="canonical" href="http://viverc.github.io/2019/04/30/iOS 3DTouch开发/"/>
 
-  <title> 归档 | 王杰會長 </title>
+  <title> iOS 3DTouch开发 | 王杰 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -146,7 +147,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">王杰會長</span>
+      <span class="site-title">王杰</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -224,66 +225,133 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 8 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 3DTouch开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-04-30T14:48:42+08:00" content="2019-04-30">
+              2019-04-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>iOS9以后，iPhone6S之后引入的3Dtouch。</p>
+<a id="more"></a>
+<p>日常开发会用到3DTouch的两个功能<br>1、对APP的图标进行按压弹出菜单。<br>2、在应用内对某个控件进行按压操作。</p>
+<h3 id="u6838_u5FC3_u7C7B_uFF1AUIApplicationShortcutItem"><a href="#u6838_u5FC3_u7C7B_uFF1AUIApplicationShortcutItem" class="headerlink" title="核心类：UIApplicationShortcutItem"></a>核心类：UIApplicationShortcutItem</h3><h4 id="u56FE_u6807_u4F7F_u7528"><a href="#u56FE_u6807_u4F7F_u7528" class="headerlink" title="图标使用"></a>图标使用</h4><p>有两种添加方式</p>
+<p>1、静态添加，添加到info.plist文件</p>
+<p>在info.plist中添加UIApplicationShortcutItems关键字<br>UIApplicationShortcutItemType:     快捷可选项的特定字符串(必填)<br>UIApplicationShortcutItemTitle:    快捷可选项的标题(必填)<br>UIApplicationShortcutItemSubtitle: 快捷可选项的子标题(可选)<br>UIApplicationShortcutItemIconType: 快捷可选项的图标(可选)<br>UIApplicationShortcutItemIconFile: 快捷可选项的自定义图标(可选)<br>UIApplicationShortcutItemUserInfo: 快捷可选项的附加信息(可选)<br>2、通过代码添加<br>添加的每个选项是UIApplicationShortcutItem的实例化的一个对象，先来看一下UIApplicationShortcutItem的init方法</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithType:(<span class="type">NSString</span> *)<span class="typedef"><span class="keyword">type</span> localizedTitle:<span class="container">(<span class="type">NSString</span> *)</span>localizedTitle localizedSubtitle:<span class="container">(nullable <span class="type">NSString</span> *)</span>localizedSubtitle icon:<span class="container">(nullable <span class="type">UIApplicationShortcutIcon</span> *)</span>icon userInfo:<span class="container">(nullable <span class="type">NSDictionary</span> *)</span>userInfo</span></span><br></pre></td></tr></table></figure>
+<p>方法里面所对应的各个参数：<br>type：唯一表示的字符串<br>localizedTitle: 标题<br>localizedSubtitle:副标题<br>icon:图标<br>userInfo:附件信息</p>
+<h4 id="u5E94_u7528_u5185_u4F7F_u7528"><a href="#u5E94_u7528_u5185_u4F7F_u7528" class="headerlink" title="应用内使用"></a>应用内使用</h4>
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/30/程序灵魂-几个简单的算法/" rel="next" title="你可能会用到的几个简单的算法">
+                <i class="fa fa-chevron-left"></i> 你可能会用到的几个简单的算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/30/关于RunLoop说两句/" rel="prev" title="关于RunLoop说两句">
+                关于RunLoop说两句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/07/iOS 3DTouch开发/" itemprop="url">
-              
-                <span itemprop="name">iOS 3DTouch开发</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-07T11:16:15+08:00"
-              content="2018-03-07" >
-          03-07
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -291,6 +359,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -310,13 +382,22 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/卡通头像.JPG"
-               alt="王杰會長" />
-          <p class="site-author-name" itemprop="name">王杰會長</p>
+               alt="王杰" />
+          <p class="site-author-name" itemprop="name">王杰</p>
           <p class="site-description motion-element" itemprop="description">一个不会弹吉他的摄影师不是一个好程序猿!</p>
         </div>
         <nav class="site-state motion-element">
@@ -384,6 +465,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6838_u5FC3_u7C7B_uFF1AUIApplicationShortcutItem"><span class="nav-number">1.</span> <span class="nav-text">核心类：UIApplicationShortcutItem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u56FE_u6807_u4F7F_u7528"><span class="nav-number">1.1.</span> <span class="nav-text">图标使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5E94_u7528_u5185_u4F7F_u7528"><span class="nav-number">1.2.</span> <span class="nav-text">应用内使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -398,11 +490,11 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王杰會長</span>
+  <span class="author" itemprop="copyrightHolder">王杰</span>
 </div>
 
 <div class="powered-by">
@@ -479,11 +571,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
