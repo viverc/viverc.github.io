@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="1、ARC 是 Automatic Reference Counting 的缩写, 即自动引用计数. 这是苹果在 iOS5 中引入的内存管理机制. Objective-C 和 Swift 使用 ARC 追踪和管理应用的内存使用. 这一机制使得开发者无需键入 retain 和 release , 这不仅能够降低程序崩溃和内存泄露的风险, 而且可以减少开发者的工作量, 能够大幅度提升程序的 流畅性 和">
+<meta name="description" content="title: iOS运行时机制-RunTimetags: [iOS]">
 <meta property="og:type" content="website">
-<meta property="og:title" content="面试题答案">
-<meta property="og:url" content="http://viverc.github.io/准备中/面试题答案.html">
+<meta property="og:title" content="王杰">
+<meta property="og:url" content="http://viverc.github.io/准备中/iOS常用.html">
 <meta property="og:site_name" content="王杰">
-<meta property="og:description" content="1、ARC 是 Automatic Reference Counting 的缩写, 即自动引用计数. 这是苹果在 iOS5 中引入的内存管理机制. Objective-C 和 Swift 使用 ARC 追踪和管理应用的内存使用. 这一机制使得开发者无需键入 retain 和 release , 这不仅能够降低程序崩溃和内存泄露的风险, 而且可以减少开发者的工作量, 能够大幅度提升程序的 流畅性 和">
-<meta property="og:updated_time" content="2016-07-14T00:49:40.000Z">
+<meta property="og:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
+<meta property="og:updated_time" content="2019-05-28T04:41:57.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试题答案">
-<meta name="twitter:description" content="1、ARC 是 Automatic Reference Counting 的缩写, 即自动引用计数. 这是苹果在 iOS5 中引入的内存管理机制. Objective-C 和 Swift 使用 ARC 追踪和管理应用的内存使用. 这一机制使得开发者无需键入 retain 和 release , 这不仅能够降低程序崩溃和内存泄露的风险, 而且可以减少开发者的工作量, 能够大幅度提升程序的 流畅性 和">
+<meta name="twitter:title" content="王杰">
+<meta name="twitter:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
 
 
 
@@ -114,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://viverc.github.io/准备中/面试题答案.html"/>
+  <link rel="canonical" href="http://viverc.github.io/准备中/iOS常用.html"/>
 
   <title>
   
 
   
-    面试题答案 | 王杰
+     | 王杰
   
 </title>
 </head>
@@ -234,8 +234,25 @@
   <div id="posts" class="posts-expand">
     
     
-      <a id="more"></a>
-<p>1、ARC 是 Automatic Reference Counting 的缩写, 即自动引用计数. 这是苹果在 iOS5 中引入的内存管理机制. Objective-C 和 Swift 使用 ARC 追踪和管理应用的内存使用. 这一机制使得开发者无需键入 retain 和 release , 这不仅能够降低程序崩溃和内存泄露的风险, 而且可以减少开发者的工作量, 能够大幅度提升程序的 流畅性 和 可预测性 . 但是 ARC 不适用于 Core Foundation 框架中, 仍然需要手动管理内存.</p>
+      <p>title: iOS运行时机制-RunTime<br>tags: [iOS]</p>
+<a id="more"></a>
+<p>圆角:<br>layer.cornerRadius<br>layer.masksToBounds</p>
+<p>阴影:<br>        view.layer.shadowOffset = CGSizeMake(0, 5);</p>
+<pre><code> view.layer.shadowUIColor = [UIColor blackColor];
+
+ view.layer.shadowOpacity = 0.05;//阴影透明度，默认0
+
+ view.layer.shadowRadius = 5;//阴影半径，默认3
+
+//view.layer.masksToBounds = NO;
+ clipsToBounds = NO;
+ layer.cornerRadius
+
+
+
+
+ // 3.GCD
+</code></pre><p>dispatch_async(dispatch_get_main_queue(), ^{<br>   // UI更新代码<br>   self.alert.text = @”Thanks!”;<br>});</p>
 
     
   </div>
