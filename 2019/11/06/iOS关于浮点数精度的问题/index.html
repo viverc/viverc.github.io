@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="一个不会做饭的摄影师不是一个好程序猿!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王小贰_er">
-<meta property="og:url" content="http://viverc.github.io/archives/2019/04/index.html">
+<meta name="description" content="其实不仅是iOS的浮点数计算会存在这个问题,各个平台的开发都会存在这个问题,这个是由于计算机本身的性质导致的.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS关于浮点数精度的问题">
+<meta property="og:url" content="http://viverc.github.io/2019/11/06/iOS关于浮点数精度的问题/index.html">
 <meta property="og:site_name" content="王小贰_er">
-<meta property="og:description" content="一个不会做饭的摄影师不是一个好程序猿!">
+<meta property="og:description" content="其实不仅是iOS的浮点数计算会存在这个问题,各个平台的开发都会存在这个问题,这个是由于计算机本身的性质导致的.">
+<meta property="og:updated_time" content="2019-11-06T01:58:04.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王小贰_er">
-<meta name="twitter:description" content="一个不会做饭的摄影师不是一个好程序猿!">
+<meta name="twitter:title" content="iOS关于浮点数精度的问题">
+<meta name="twitter:description" content="其实不仅是iOS的浮点数计算会存在这个问题,各个平台的开发都会存在这个问题,这个是由于计算机本身的性质导致的.">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://viverc.github.io/archives/2019/04/"/>
+  <link rel="canonical" href="http://viverc.github.io/2019/11/06/iOS关于浮点数精度的问题/"/>
 
-  <title> 归档 | 王小贰_er </title>
+  <title> iOS关于浮点数精度的问题 | 王小贰_er </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,103 +225,128 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 11 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/30/关于RunLoop说两句/" itemprop="url">
-              
-                <span itemprop="name">关于RunLoop说两句</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-04-30T15:31:44+08:00"
-              content="2019-04-30" >
-          04-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/30/程序灵魂-几个简单的算法/" itemprop="url">
-              
-                <span itemprop="name">你可能会用到的几个简单的算法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-04-30T15:31:39+08:00"
-              content="2019-04-30" >
-          04-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS关于浮点数精度的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-11-06T09:58:04+08:00" content="2019-11-06">
+              2019-11-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>其实不仅是iOS的浮点数计算会存在这个问题,各个平台的开发都会存在这个问题,这个是由于计算机本身的性质导致的.</p>
+<a id="more"></a>
+<h3 id="u4E00-_u5B58_u5728_u54EA_u4E9B_u95EE_u9898"><a href="#u4E00-_u5B58_u5728_u54EA_u4E9B_u95EE_u9898" class="headerlink" title="一.存在哪些问题"></a>一.存在哪些问题</h3><p>iOS开发的过程中浮点数的计算会出现误差不管是float或者是double都会存在.</p>
+<h3 id="u4E8C-_u89E3_u51B3_u65B9_u6CD5"><a href="#u4E8C-_u89E3_u51B3_u65B9_u6CD5" class="headerlink" title="二.解决方法"></a>二.解决方法</h3><h4 id="1-_u5C06float_u8F6C_u6362_u4E3Adouble_u8FD9_u4E2A_u65B9_u6CD5_u662F_u4E0D_u53EF_u884C_u7684_u7CBE_u5EA6_u4F9D_u65E7_u4F1A_u4E22_u5931"><a href="#1-_u5C06float_u8F6C_u6362_u4E3Adouble_u8FD9_u4E2A_u65B9_u6CD5_u662F_u4E0D_u53EF_u884C_u7684_u7CBE_u5EA6_u4F9D_u65E7_u4F1A_u4E22_u5931" class="headerlink" title="1.将float转换为double这个方法是不可行的精度依旧会丢失"></a>1.将float转换为double这个方法是不可行的精度依旧会丢失</h4><h4 id="2-_u5C06_u539F_u59CB_u7684float_u8F6C_u6362_u4E3Adouble_u7136_u540E_u8F6C_u6210NSString_u53EF_u4EE5_u4FDD_u7559_u7CBE_u5EA6_u4F46_u662F_u8FD9_u4E2A_u65B9_u6CD5_u65E0_u6CD5_u4F7F_u7528_u5B58_u5728_u8BA1_u7B97_u7684_u60C5_u51B5"><a href="#2-_u5C06_u539F_u59CB_u7684float_u8F6C_u6362_u4E3Adouble_u7136_u540E_u8F6C_u6210NSString_u53EF_u4EE5_u4FDD_u7559_u7CBE_u5EA6_u4F46_u662F_u8FD9_u4E2A_u65B9_u6CD5_u65E0_u6CD5_u4F7F_u7528_u5B58_u5728_u8BA1_u7B97_u7684_u60C5_u51B5" class="headerlink" title="2.将原始的float转换为double然后转成NSString可以保留精度但是这个方法无法使用存在计算的情况."></a>2.将原始的float转换为double然后转成NSString可以保留精度但是这个方法无法使用存在计算的情况.</h4><h4 id="3-_u4F7F_u7528NSDecimalNumber_u7C7B_28_u5EFA_u8BAE_u4F7F_u7528_u8FD9_u4E2A_29"><a href="#3-_u4F7F_u7528NSDecimalNumber_u7C7B_28_u5EFA_u8BAE_u4F7F_u7528_u8FD9_u4E2A_29" class="headerlink" title="3.使用NSDecimalNumber类(建议使用这个)"></a>3.使用NSDecimalNumber类(建议使用这个)</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/01/iPhone开发尺寸标准/" rel="next" title="iPhone开发尺寸规范">
+                <i class="fa fa-chevron-left"></i> iPhone开发尺寸规范
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/12/iOS 3DTouch开发/" rel="prev" title="iOS 3DTouch开发">
+                iOS 3DTouch开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -328,6 +354,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -347,8 +377,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://github.com/viverc/Photos/blob/master/常用/头像/头像_奈良_卡通.JPG"
@@ -420,6 +459,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00-_u5B58_u5728_u54EA_u4E9B_u95EE_u9898"><span class="nav-number">1.</span> <span class="nav-text">一.存在哪些问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C-_u89E3_u51B3_u65B9_u6CD5"><span class="nav-number">2.</span> <span class="nav-text">二.解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_u5C06float_u8F6C_u6362_u4E3Adouble_u8FD9_u4E2A_u65B9_u6CD5_u662F_u4E0D_u53EF_u884C_u7684_u7CBE_u5EA6_u4F9D_u65E7_u4F1A_u4E22_u5931"><span class="nav-number">2.1.</span> <span class="nav-text">1.将float转换为double这个方法是不可行的精度依旧会丢失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_u5C06_u539F_u59CB_u7684float_u8F6C_u6362_u4E3Adouble_u7136_u540E_u8F6C_u6210NSString_u53EF_u4EE5_u4FDD_u7559_u7CBE_u5EA6_u4F46_u662F_u8FD9_u4E2A_u65B9_u6CD5_u65E0_u6CD5_u4F7F_u7528_u5B58_u5728_u8BA1_u7B97_u7684_u60C5_u51B5"><span class="nav-number">2.2.</span> <span class="nav-text">2.将原始的float转换为double然后转成NSString可以保留精度但是这个方法无法使用存在计算的情况.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_u4F7F_u7528NSDecimalNumber_u7C7B_28_u5EFA_u8BAE_u4F7F_u7528_u8FD9_u4E2A_29"><span class="nav-number">2.3.</span> <span class="nav-text">3.使用NSDecimalNumber类(建议使用这个)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -516,11 +566,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

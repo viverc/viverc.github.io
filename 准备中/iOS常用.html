@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://viverc.github.io/准备中/iOS常用.html">
 <meta property="og:site_name" content="王小贰_er">
 <meta property="og:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
-<meta property="og:updated_time" content="2019-05-28T04:41:57.084Z">
+<meta property="og:updated_time" content="2019-11-13T02:37:51.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王小贰_er">
 <meta name="twitter:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
@@ -236,9 +236,11 @@
     
       <p>title: iOS运行时机制-RunTime<br>tags: [iOS]</p>
 <a id="more"></a>
-<p>圆角:<br>layer.cornerRadius<br>layer.masksToBounds</p>
-<p>阴影:<br>        view.layer.shadowOffset = CGSizeMake(0, 5);</p>
-<pre><code> view.layer.shadowUIColor = [UIColor blackColor];
+<p>圆角:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">layer</span><span class="class">.cornerRadius</span>   </span><br><span class="line"><span class="tag">layer</span><span class="class">.masksToBounds</span></span><br></pre></td></tr></table></figure></p>
+<p>阴影:</p>
+<pre><code> view.layer.shadowOffset = CGSizeMake(0, 5);
+
+ view.layer.shadowUIColor = [UIColor blackColor];
 
  view.layer.shadowOpacity = 0.05;//阴影透明度，默认0
 
@@ -247,12 +249,34 @@
 //view.layer.masksToBounds = NO;
  clipsToBounds = NO;
  layer.cornerRadius
-
-
-
-
- // 3.GCD
-</code></pre><p>dispatch_async(dispatch_get_main_queue(), ^{<br>   // UI更新代码<br>   self.alert.text = @”Thanks!”;<br>});</p>
+</code></pre>  <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line"> <span class="comment">// 3.GCD</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">   <span class="comment">// UI更新代码</span></span><br><span class="line">   <span class="keyword">self</span><span class="variable">.alert</span><span class="variable">.text</span> = <span class="string">@"Thanks!"</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>//导航返回barbuttonItem 颜色问题</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIImage</span> *rightImage = [[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"add"</span>] imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysOriginal</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIBarButtonItem</span> *barBtn1=[[<span class="built_in">UIBarButtonItem</span> alloc] initWithImage:rightImage style:<span class="built_in">UIBarButtonItemStylePlain</span> target:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(changeColor)];</span><br></pre></td></tr></table></figure>
+<p>倒计时的方法<br>//计时器</p>
+<ul>
+<li><p>(void)countDownWithTime{<br>  __block NSInteger timeout = 60; // 倒计时时间</p>
+<p>  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);<br>  dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);<br>  dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);<br>  dispatch_source_set_event_handler(_timer, ^{</p>
+<pre><code>timeout--;
+if(timeout&lt;=0){ //倒计时结束，关闭
+    dispatch_source_cancel(_timer);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.codeButton.userInteractionEnabled = YES;
+        self.codeButton.selected = NO;
+        [self.codeButton setTitle:@&quot;获取验证码&quot; forState:UIControlStateNormal];
+    });
+}else{
+    int seconds = timeout % 60;
+    NSString *strTime = [NSString stringWithFormat:@&quot;%.2dS&quot;, seconds];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.codeButton.userInteractionEnabled = NO;
+        self.codeButton.selected = YES;
+        [self.codeButton setTitle:strTime forState:UIControlStateNormal];
+    });
+}
+</code></pre><p>  });</p>
+<p>  dispatch_resume(_timer);<br>}</p>
+</li>
+</ul>
 
     
   </div>
@@ -290,7 +314,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/头像.JPG"
+               src="https://github.com/viverc/Photos/blob/master/常用/头像/头像_奈良_卡通.JPG"
                alt="王杰" />
           <p class="site-author-name" itemprop="name">王杰</p>
           <p class="site-description motion-element" itemprop="description">一个不会做饭的摄影师不是一个好程序猿!</p>
@@ -298,7 +322,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
