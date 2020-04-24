@@ -1,0 +1,604 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS原生调用VUE页面相互传值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS原生与VUE的交互">
+<meta property="og:url" content="http://viverc.github.io/2020/04/24/iOS中使用VUE/index.html">
+<meta property="og:site_name" content="王小贰_er">
+<meta property="og:description" content="iOS原生调用VUE页面相互传值">
+<meta property="og:updated_time" content="2020-04-24T06:38:46.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS原生与VUE的交互">
+<meta name="twitter:description" content="iOS原生调用VUE页面相互传值">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://viverc.github.io/2020/04/24/iOS中使用VUE/"/>
+
+  <title> iOS原生与VUE的交互 | 王小贰_er </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王小贰_er</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个不会做饭的摄影师不是一个好程序猿!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS原生与VUE的交互
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-04-24T14:38:46+08:00" content="2020-04-24">
+              2020-04-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>iOS原生调用VUE页面相互传值</p>
+<a id="more"></a>
+<p>最近公司的项目涉及到了混合开发,需要用VUE写一部分界面,为了更好的交互体验页面的转跳还是用的原生的导航,这就需要本地和JS的数据交互.</p>
+<p>###一.VUE部分<br>(关于VUE环境的相关配置请移步至)<br>本地测试:将VUE的项目运行(npm run dev)起来之后其实就是生成的一个网址,IP就是自己电脑的IP,根据设定好的端口就可以在手机端访问了.<br>简单的介绍一下VUE的页面实现(这个也是自己刚开始学的有错误的地方还请指出<code>dawn_dev@163.com</code>)一个页面基本上是有三部分组成:<br>1.html 这部分主要是负责显示控件就是那个lablel啊button这些.<br>2.CSS  这部分主要是负责控制这些控件的样式,如果设置一下字体的颜色、大小.<br>3.JS   这部分主要负责实现数据交互.</p>
+<p>###二.APP部分<br>因为现在基本上都用WKWebview所以这里接不介绍UIWebView的使用方法了.</p>
+<p>####1.WKWebView的相关设置<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">WKWebview的使用方法  </span><br><span class="line"><span class="comment">//1.包含头文件</span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;WebKit/WebKit.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.需要遵循的代理</span></span><br><span class="line">&lt;WK<span class="built_in">UIDelegate</span>,WKNavigationDelegate,WKScriptMessageHandler&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.创建webView</span></span><br><span class="line">- (<span class="keyword">void</span>)initWebView&#123;</span><br><span class="line"></span><br><span class="line">    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];</span><br><span class="line">    WKUserContentController *userController = [[WKUserContentController alloc] init];</span><br><span class="line">    config<span class="variable">.preferences</span><span class="variable">.javaScriptEnabled</span> = <span class="literal">YES</span>;<span class="comment">//这里是设置是否可以跟JS交互默认是NO</span></span><br><span class="line">    config<span class="variable">.userContentController</span> = userController;</span><br><span class="line">    [userController addScriptMessageHandler:<span class="keyword">self</span> name:<span class="string">@"JSSendMessageToOC"</span>];<span class="comment">//这里设置接收VUE的方法可以添加多个,方法名是在VUE里面定义的</span></span><br><span class="line">    WKWebView *webView = [[WKWebView alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];<span class="comment">//这里可以把WebView设置成全局变量</span></span><br><span class="line">     webView<span class="variable">.UIDelegate</span> = <span class="keyword">self</span>;</span><br><span class="line">     webView<span class="variable">.navigationDelegate</span> = <span class="keyword">self</span>;</span><br><span class="line">     webView<span class="variable">.allowsBackForwardNavigationGestures</span> = <span class="literal">YES</span>;</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.view</span> addSubView: webView];</span><br><span class="line">    [webView<span class="variable">.navigationDelegate</span> loadRequest:[<span class="built_in">NSURLRequest</span> requestWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://192.168.9.196:8081/#/learn"</span>]]];<span class="comment">//加载自己需要的地址</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.实现代理方法,这个方法就是JS调用本地时回调的方法</span></span><br><span class="line">- (<span class="keyword">void</span>)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//message中包含了js中所有的信息</span></span><br><span class="line">    <span class="comment">//有两个重要的属性，一个是name，进行区分判断具体响应某个方法</span></span><br><span class="line">    <span class="comment">//body中就是js传过来的参数</span></span><br><span class="line">    <span class="keyword">if</span> ([message<span class="variable">.name</span> isEqualToString:<span class="string">@"JSSendMessageToOC"</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"接收到JS发来的数据%@"</span>,message<span class="variable">.body</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//5.关于VUE的弹窗就是那个Alert需要单独设置不然你会发现在浏览器调试的时候显示但是在APP里面的无法正常显示的,这个是WKUIDelegate</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(<span class="built_in">NSString</span> *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))completionHandler</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIAlertController</span> *alert = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@""</span> message:message preferredStyle:<span class="built_in">UIAlertControllerStyleAlert</span>];</span><br><span class="line">    [alert addAction:[<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"确定"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</span><br><span class="line">        completionHandler();<span class="comment">//这里这个方法一定要调用不然程序会崩溃</span></span><br><span class="line">    &#125;]];</span><br><span class="line">    [<span class="keyword">self</span> presentViewController:alert animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####2.OC传值给JS<br>webview都设置好了,加载出来数据之后就可以传值了  </p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里类似于网络请求你发一个数据给VUE然后它返回一个数据给你</span></span><br><span class="line">    <span class="built_in">NSString</span> *toVueSting = msg;</span><br><span class="line">    <span class="built_in">NSString</span> *jsStr = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"getDataFromNative('%@')"</span>,toVueSting];<span class="comment">//getDataFromNative这个方法名还是需要跟VUE里面设置的一样</span></span><br><span class="line">    [<span class="keyword">self</span>-&gt;_webView evaluateJavaScript:jsStr completionHandler:^(<span class="keyword">id</span> _Nullable d, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">             <span class="built_in">NSLog</span>(<span class="string">@"VUE返回的数据%@"</span>,d);<span class="comment">//回调值</span></span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p>####3.JS传值给OC<br>这里需要说明一下,这里其实就是js传值给本地就包含iOS和安卓,所以写VUE的时候要加个判断,根据系统来响应.  </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> <span class="keyword">u</span> = navigator.userAgent;</span><br><span class="line"><span class="comment">//android终端</span></span><br><span class="line">  <span class="keyword">var</span> isAndroid = <span class="keyword">u</span>.indexOf('Android') &gt; -1 || <span class="keyword">u</span>.indexOf('Adr') &gt; -1; </span><br><span class="line"><span class="comment">//ios终端</span></span><br><span class="line">  <span class="keyword">var</span> isiOS = !!<span class="keyword">u</span>.<span class="literal">match</span>(/\(i[^;]+;( <span class="keyword">U</span>;)? CPU.+<span class="keyword">Mac</span> OS X/); </span><br><span class="line">      	<span class="keyword">if</span>(!isiOS)&#123;</span><br><span class="line">          <span class="label">$App</span>.getDataFromNative(</span><br><span class="line">             vue给android传值</span><br><span class="line">             <span class="string">"传一个字符串"</span></span><br><span class="line">        );</span><br><span class="line">          &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"> 			 <span class="keyword">window</span>.webkit.messageHandlers. getDataFromNative.postMessage(</span><br><span class="line"> 			 &#123;<span class="string">"obj"</span>:<span class="string">"传一个对象"</span>&#125;</span><br><span class="line"> 			 );</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+<p>到这里基本的功能就可以实现了.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/24/程序灵魂-几个简单的算法/" rel="next" title="你可能会用到的几个简单的算法">
+                <i class="fa fa-chevron-left"></i> 你可能会用到的几个简单的算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/viverc/MyPhotos/master/头像/动漫头像.JPG"
+               alt="王杰" />
+          <p class="site-author-name" itemprop="name">王杰</p>
+          <p class="site-description motion-element" itemprop="description">一个不会做饭的摄影师不是一个好程序猿!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="mailto:dawn_dev@163.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2606545023/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/8b807e676e53/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王杰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

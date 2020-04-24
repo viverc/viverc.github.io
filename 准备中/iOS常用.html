@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://viverc.github.io/准备中/iOS常用.html">
 <meta property="og:site_name" content="王小贰_er">
 <meta property="og:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
-<meta property="og:updated_time" content="2020-01-16T08:48:29.573Z">
+<meta property="og:updated_time" content="2020-04-18T06:55:10.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王小贰_er">
 <meta name="twitter:description" content="title: iOS运行时机制-RunTimetags: [iOS]">
@@ -236,6 +236,7 @@
     
       <p>title: iOS运行时机制-RunTime<br>tags: [iOS]</p>
 <a id="more"></a>
+<p>边框<br>view.layer.borderWidth = 1;<br>view.layer.borderColor = [[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1] CGColor];</p>
 <p>圆角:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layer<span class="class">.cornerRadius</span>   </span><br><span class="line">layer<span class="class">.masksToBounds</span></span><br><span class="line">layer<span class="class">.borderWidth</span></span><br><span class="line">layer.borderColor</span><br></pre></td></tr></table></figure></p>
 <p>阴影:</p>
 <pre><code> view.layer.shadowOffset = CGSizeMake(0, 5);
@@ -277,6 +278,20 @@ if(timeout&lt;=0){ //倒计时结束，关闭
 <p>  dispatch_resume(_timer);<br>}</p>
 </li>
 </ul>
+<p>网络请求中文转码<br>`<br>[@”房屋” stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]<br>``</p>
+<p>//收键盘</p>
+<ul>
+<li>(void)touchesBegan:(NSSet<uitouch *=""> <em>)touches withEvent:(UIEvent </em>)event{<br>  [self.view endEditing:YES];<br>}</uitouch></li>
+</ul>
+<p>//判断空格</p>
+<ul>
+<li>(BOOL)isBlankString:(NSString *)aStr {<br>  if (!aStr) {<pre><code>return YES;
+</code></pre>  }<br>  if ([aStr isKindOfClass:[NSNull class]]) {<pre><code>return YES;
+</code></pre>  }<br>  if (!aStr.length) {<pre><code>return YES;
+</code></pre>  }<br>  NSCharacterSet <em>set = [NSCharacterSet whitespaceAndNewlineCharacterSet];<br>  NSString </em>trimmedStr = [aStr stringByTrimmingCharactersInSet:set];<br>  if (!trimmedStr.length) {<pre><code>return YES;
+</code></pre>  }<br>  return NO;<br>}</li>
+</ul>
+<p>tableview刷新抖动的问题<br>[UITableView appearance].estimatedRowHeight = 0;<br>[UITableView appearance].estimatedSectionFooterHeight = 0;    [UITableView appearance].estimatedSectionHeaderHeight = 0;</p>
 
     
   </div>
@@ -322,7 +337,7 @@ if(timeout&lt;=0){ //倒计时结束，关闭
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
