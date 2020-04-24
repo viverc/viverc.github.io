@@ -536,131 +536,6 @@
             
               
                 
-                <a class="post-title-link" href="/2020/03/06/画虚线的方法/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-03-06T15:57:34+08:00" content="2020-03-06">
-              2020-03-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>/**</p>
-<ul>
-<li>通过 CAShapeLayer 方式绘制虚线<br>*</li>
-<li>param lineView:       需要绘制成虚线的view</li>
-<li>param lineLength:     虚线的宽度</li>
-<li>param lineSpacing:    虚线的间距</li>
-<li>param lineColor:      虚线的颜色</li>
-<li>param lineDirection   虚线的方向  YES 为水平方向， NO 为垂直方向</li>
-<li><p>**/<br>//画虚线</p>
-<ul>
-<li>(void)drawLineOfDashByCAShapeLayer:(UIView <em>)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor </em>)lineColor lineDirection:(BOOL)isHorizonal {</li>
-</ul>
-<p>CAShapeLayer *shapeLayer = [CAShapeLayer layer];</p>
-<p>[shapeLayer setBounds:lineView.bounds];</p>
-<p>if (isHorizonal) {</p>
-<pre><code>[shapeLayer setPosition:CGPointMake(CGRectGetWidth(lineView.frame) / 2, CGRectGetHeight(lineView.frame))];
-</code></pre><p>} else{</p>
-<pre><code>[shapeLayer setPosition:CGPointMake(CGRectGetWidth(lineView.frame) / 2, CGRectGetHeight(lineView.frame)/2)];
-</code></pre><p>}</p>
-<p>[shapeLayer setFillColor:[UIColor clearColor].CGColor];<br>//  设置虚线颜色为blackColor<br>[shapeLayer setStrokeColor:lineColor.CGColor];<br>//  设置虚线宽度<br>if (isHorizonal) {</p>
-<pre><code>[shapeLayer setLineWidth:CGRectGetHeight(lineView.frame)];
-</code></pre><p>} else {</p>
-<pre><code>[shapeLayer setLineWidth:CGRectGetWidth(lineView.frame)];
-</code></pre><p>}<br>[shapeLayer setLineJoin:kCALineJoinRound];<br>//  设置线宽，线间距<br>[shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineLength], [NSNumber numberWithInt:lineSpacing], nil]];<br>//  设置路径<br>CGMutablePathRef path = CGPathCreateMutable();<br>CGPathMoveToPoint(path, NULL, 0, 0);</p>
-<p>if (isHorizonal) {</p>
-<pre><code>CGPathAddLineToPoint(path, NULL,CGRectGetWidth(lineView.frame), 0);
-</code></pre><p>} else {</p>
-<pre><code>CGPathAddLineToPoint(path, NULL, 0, CGRectGetHeight(lineView.frame));
-</code></pre><p>}</p>
-<p>[shapeLayer setPath:path];<br>CGPathRelease(path);<br>//  把绘制好的虚线添加上来<br>[lineView.layer addSublayer:shapeLayer];<br>}</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2019/11/12/iOS 3DTouch开发/" itemprop="url">
                   iOS 3DTouch开发
                 </a>
@@ -1216,6 +1091,102 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/04/iOS运行机制-runtime/" itemprop="url">
+                  iOS运行时机制-RunTime
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-04T11:18:24+08:00" content="2016-04-04">
+              2016-04-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Runtime是想要做好iOS开发，或者说是真正的深刻的掌握Objective-C这门语言所必需理解的东西。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/04/iOS运行机制-runtime/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1261,7 +1232,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
