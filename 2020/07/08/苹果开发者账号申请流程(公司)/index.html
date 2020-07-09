@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,工具," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -84,16 +84,17 @@
 
 
 
-<meta name="description" content="本来学习一下CocoaLumberjack，网上搜了一下发现基本上都是那几篇相同的文章复制过来粘贴过去连标点符号都不变的，无奈，所以自己搜集了整理了一下，虽然看上去有些简陋但还是挺简洁实用的。">
+<meta name="description" content="苹果开发者账号的申请流程(公司)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CocoaLumberjack">
-<meta property="og:url" content="http://viverc.github.io/2016/03/15/CocoaLumberjack/index.html">
+<meta property="og:title" content="苹果开发者账号申请流程(公司)">
+<meta property="og:url" content="http://viverc.github.io/2020/07/08/苹果开发者账号申请流程(公司)/index.html">
 <meta property="og:site_name" content="王小贰_er">
-<meta property="og:description" content="本来学习一下CocoaLumberjack，网上搜了一下发现基本上都是那几篇相同的文章复制过来粘贴过去连标点符号都不变的，无奈，所以自己搜集了整理了一下，虽然看上去有些简陋但还是挺简洁实用的。">
-<meta property="og:updated_time" content="2017-09-10T18:15:10.000Z">
+<meta property="og:description" content="苹果开发者账号的申请流程(公司)">
+<meta property="og:image" content="https://github.com/viverc/MyPhotos/blob/master/申请开发者账号流程/AppleID申请-02.png">
+<meta property="og:updated_time" content="2020-07-09T02:49:50.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CocoaLumberjack">
-<meta name="twitter:description" content="本来学习一下CocoaLumberjack，网上搜了一下发现基本上都是那几篇相同的文章复制过来粘贴过去连标点符号都不变的，无奈，所以自己搜集了整理了一下，虽然看上去有些简陋但还是挺简洁实用的。">
+<meta name="twitter:title" content="苹果开发者账号申请流程(公司)">
+<meta name="twitter:description" content="苹果开发者账号的申请流程(公司)">
 
 
 
@@ -114,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://viverc.github.io/2016/03/15/CocoaLumberjack/"/>
+  <link rel="canonical" href="http://viverc.github.io/2020/07/08/苹果开发者账号申请流程(公司)/"/>
 
-  <title> CocoaLumberjack | 王小贰_er </title>
+  <title> 苹果开发者账号申请流程(公司) | 王小贰_er </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +247,7 @@
             
             
               
-                CocoaLumberjack
+                苹果开发者账号申请流程(公司)
               
             
           </h1>
@@ -258,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T11:18:24+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2020-07-08T00:00:00+08:00" content="2020-07-08">
+              2020-07-08
             </time>
           </span>
 
@@ -286,19 +287,20 @@
       
 
       
-        <p>本来学习一下CocoaLumberjack，网上搜了一下发现基本上都是那几篇相同的文章复制过来粘贴过去连标点符号都不变的，无奈，所以自己搜集了整理了一下，虽然看上去有些简陋但还是挺简洁实用的。</p>
+        <p>苹果开发者账号的申请流程(公司)</p>
 <a id="more"></a>
-<h3 id="u524D_u63D0"><a href="#u524D_u63D0" class="headerlink" title="前提"></a>前提</h3><p>首先自己建立一个测试的Demo然后用cocopods安装cocoalumberjack（至于Cocoapods的使用方法请看另一篇文章：CocoaPods的使用）</p>
-<p><code>在Podfile文件中加入 pod &#39;CocoaLumberjack&#39;   #注意引号的格式。</code></p>
-<p>然后 <code>pod update</code> 一下就可以了<br>安装完这个CocoaLumberjack 就可以用了，很多教程里面都说添加一个common.h文件然后把common.h文件加到.pch文件里面就行了其实其原理就是把下面的几行代码整个工程能用到就行了，具体怎么实现看个人爱好了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="preprocessor">#<span class="keyword">ifdef</span> DEBUG</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> DDLogLevel ddLogLevel =DDLogLevelVerbose; </span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">else</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> DDLogLevel ddLogLevel = DDLogLevelOff;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
-<p>然后还需要导入 “CocoaLumberjack.h” 文件之后在appdelegate里面实例化两个单例就可以使用DDLog了</p>
-<p><code>[DDLog addLogger:[DDTTYLogger sharedInstance]];</code></p>
-<p><code>[[DDTTYLogger sharedInstance] setColorsEnabled:YES];</code></p>
-<p>###基础的使用方法如下</p>
-<p>DDLogError(@”错误颜色”);  //默认是红色的</p>
-<p>DDLogWarn(@”警告颜色”); //默认是橙色的</p>
-<p>DDLogInfo(@”提示颜色”);  //默认是黑色的</p>
-<p>DDLogVerbose(@”详细信息颜色”); //默认是黑色的</p>
+<h3 id="u4E00-_u8D26_u53F7_u5206_u7C7B"><a href="#u4E00-_u8D26_u53F7_u5206_u7C7B" class="headerlink" title="一.账号分类"></a>一.账号分类</h3><p>苹果的开发者账号目前分为3大类:<br>1.个人(年费99$) 可以上架到APPSotre<br>2.公司(年费99$)  可以上架到APPStore<br>3.企业 (年费299$$) 无法上架到APPStroe<br>其实还有一种是政府类的跟公司类型基本一样但是可以豁免年费  </p>
+<h3 id="u4E8C-_u8D26_u53F7_u7533_u8BF7_u6D41_u7A0B"><a href="#u4E8C-_u8D26_u53F7_u7533_u8BF7_u6D41_u7A0B" class="headerlink" title="二.账号申请流程"></a>二.账号申请流程</h3><p>1、注册苹果账号AppleID<br>2、开启双重认证<br>3、下载Apple Developer应用<br>4、到Apple Developer应用填写申请资料<br>5、支付年费<br><strong>备注:这里需要说明一下应该是从2020年开始(具体时间可能不太准确)申请开发者账号填写资料的部分必须到DeveloperAPP上填写</strong></p>
+<h3 id="u4E09-_u51C6_u5907_u5DE5_u4F5C"><a href="#u4E09-_u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="三.准备工作"></a>三.准备工作</h3><p>1、一部iPhone手机(需要有一个手机号用于开启双重认证)<br>2、邮箱(用于AppleID账号)</p>
+<h3 id="u56DB-_u5177_u4F53_u7684_u6CE8_u518C_u6D41_u7A0B"><a href="#u56DB-_u5177_u4F53_u7684_u6CE8_u518C_u6D41_u7A0B" class="headerlink" title="四.具体的注册流程"></a>四.具体的注册流程</h3><h4 id="1_29-_u6CE8_u518C_u82F9_u679C_u8D26_u53F7AppleID"><a href="#1_29-_u6CE8_u518C_u82F9_u679C_u8D26_u53F7AppleID" class="headerlink" title="1).注册苹果账号AppleID"></a>1).注册苹果账号AppleID</h4><p>首先在苹果官网注册一个AppleID(如果已经注册可以跳过此步骤)<br><strong>(需要注意的是申请账号的时候一定要记录下安全提示问题和答案建议截图保存下来)</strong><br><a href="https://appleid.apple.com/account#!&amp;page=create" target="_blank" rel="external">注册入口 </a></p>
+<p>(按照流程让填什么就填什么就可以了)<br><strong>1.</strong>按照要求填写信息然后点击-&gt;继续 </p>
+<p><strong>2.</strong>邮箱验证:打开注册AppleID的邮箱，填写验证码，点击-&gt;继续</p>
+<p><strong>3.</strong>手机验证:根据手机收到的验证码填写之后点击-&gt;继续  </p>
+<p><strong>4.</strong>申请完成<br><img src="https://github.com/viverc/MyPhotos/blob/master/申请开发者账号流程/AppleID申请-02.png" alt="申请AppleID">  </p>
+<h4 id="2_29-_u5F00_u542F_u53CC_u91CD_u8BA4_u8BC1"><a href="#2_29-_u5F00_u542F_u53CC_u91CD_u8BA4_u8BC1" class="headerlink" title="2).开启双重认证"></a>2).开启双重认证</h4><p>开发者账号是必须要开启双重认证才可以继续申请的,在手机或者网站上开启都可以.这里说一下在手机上开启的流程  </p>
+<p><strong>1.</strong>进入设置，登录需要开启双重认证的AppleID。<br><strong>2.</strong>按照截图的顺序一步一步进行开启即可</p>
+<h4 id="3_29-_u4E0B_u8F7DApple_Developer_u5E94_u7528_28_u73B0_u5728_u53EB_u201D_u5F00_u53D1_u8005_u201D_29"><a href="#3_29-_u4E0B_u8F7DApple_Developer_u5E94_u7528_28_u73B0_u5728_u53EB_u201D_u5F00_u53D1_u8005_u201D_29" class="headerlink" title="3).下载Apple Developer应用(现在叫”开发者”)"></a>3).下载Apple Developer应用(现在叫”开发者”)</h4><p><a href="https://apps.apple.com/cn/app/apple-developer/id640199958" target="_blank" rel="external">下载链接</a><br>(需要iOS12.4及以上的系统才可以下载)<br>注册公司类型的开发者账号必须要有邓白氏码(D-U-N-S编码)如果没有请先申请<a href="/">如何申请邓白氏编码</a></p>
+<p>1.登录AppleID<br>2.点击”现在注册”<br>3.填写联系人身份信息<br>4.拍照验证身份<br>5.填写法人身份信息<br>6.选择实体类型<br>7.填写邓白氏码 (没有的话前面已经有申请的流程<a href="/">如何申请邓白氏编码</a>)<br>8.填写公司的基本信息包括邮编 网站 电话<br>9.填写联系人信息<br>10.提交信息<br>11.等待审核 之后苹果的工作人员会联系公司法人(根据你填写的法人联系方式)确认,确认完会发一封邮件<br>12.审核完成,支付年费,申请完成</p>
 
       
     </div>
@@ -323,8 +325,6 @@
           
             <a href="/tags/iOS/" rel="tag">#iOS</a>
           
-            <a href="/tags/工具/" rel="tag">#工具</a>
-          
         </div>
       
 
@@ -332,17 +332,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/14/iOS第三方库管理-CocoaPods的使用/" rel="next" title="iOS第三方库管理-CocoaPods的使用">
-                <i class="fa fa-chevron-left"></i> iOS第三方库管理-CocoaPods的使用
+              <a href="/2020/05/06/NSString常用的分类方法/" rel="next" title="NSString常用的分类方法">
+                <i class="fa fa-chevron-left"></i> NSString常用的分类方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/04/iOS运行机制-runtime/" rel="prev" title="iOS运行时机制-RunTime">
-                iOS运行时机制-RunTime <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -478,7 +474,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u524D_u63D0"><span class="nav-number">1.</span> <span class="nav-text">前提</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00-_u8D26_u53F7_u5206_u7C7B"><span class="nav-number">1.</span> <span class="nav-text">一.账号分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C-_u8D26_u53F7_u7533_u8BF7_u6D41_u7A0B"><span class="nav-number">2.</span> <span class="nav-text">二.账号申请流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E09-_u51C6_u5907_u5DE5_u4F5C"><span class="nav-number">3.</span> <span class="nav-text">三.准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u56DB-_u5177_u4F53_u7684_u6CE8_u518C_u6D41_u7A0B"><span class="nav-number">4.</span> <span class="nav-text">四.具体的注册流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1_29-_u6CE8_u518C_u82F9_u679C_u8D26_u53F7AppleID"><span class="nav-number">4.1.</span> <span class="nav-text">1).注册苹果账号AppleID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2_29-_u5F00_u542F_u53CC_u91CD_u8BA4_u8BC1"><span class="nav-number">4.2.</span> <span class="nav-text">2).开启双重认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3_29-_u4E0B_u8F7DApple_Developer_u5E94_u7528_28_u73B0_u5728_u53EB_u201D_u5F00_u53D1_u8005_u201D_29"><span class="nav-number">4.3.</span> <span class="nav-text">3).下载Apple Developer应用(现在叫”开发者”)</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
